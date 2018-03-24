@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<phpunit bootstrap="test/bootstrap.php" colors="true">
+    <testsuites>
+        <testsuite name="Protobuf-PHP Test Suite">
+            <file>test/library/DrSlump/Protobuf/Test/Codec/BinaryTest.php</file>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+            <directory suffix=".php">library/DrSlump/</directory>
+        </whitelist>
+    </filter>
+</phpunit>

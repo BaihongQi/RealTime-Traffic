@@ -1,0 +1,13 @@
+{
+    "name": "baihong/live_traffic",
+    "authors": [
+        {
+            "name": "BaihongQi",
+            "email": "bq@ualberta.ca"
+        }
+    ],
+    "require": {
+        "illuminate/support": "^5.6",
+        "google/gtfs-realtime-bindings": "^0.0.2"
+    }
+}

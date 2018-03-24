@@ -1,0 +1,1 @@
+../centraldesktop/protobuf-php/protoc-gen-php.bat
