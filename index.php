@@ -7,11 +7,12 @@
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
-        height: 100%;
+        height: 80%;
       }
       /* Optional: Makes the sample page fill the window. */
       html, body {
-        height: 100%;
+        height: 90%;
+        width:80%;
         margin: 0;
         padding: 0;
       }
@@ -19,7 +20,7 @@
   </head>
 
   <body>
-    <div id="map"></div>
+    <div id="map" class="content"></div>
 
     <script>
       var customLabel = {
@@ -33,8 +34,8 @@
 
         function initMap() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(53.531612, -113.434975),
-          zoom: 12
+          center: new google.maps.LatLng(53.5232, -113.5263),
+          zoom: 10
         });
         var infoWindow = new google.maps.InfoWindow;
 
@@ -70,6 +71,23 @@
                 infoWindow.setContent(infowincontent);
                 infoWindow.open(map, marker);
               });
+
+              var flightPlanCoordinates = [
+                {lat: 53.5225, lng: -113.6242},
+                {lat: 53.4855, lng: -113.5137},
+                {lat: 53.5232, lng: -113.5263}
+              ];
+              var flightPath = new google.maps.Polyline({
+                path: flightPlanCoordinates,
+                geodesic: true,
+                strokeColor: '#FF0000',
+                strokeOpacity: 1.0,
+                strokeWeight: 2
+              });
+
+              flightPath.setMap(map);
+
+
             });
           });
         }
