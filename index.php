@@ -1,4 +1,5 @@
 <!DOCTYPE html >
+
   <head>
     <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
@@ -115,5 +116,10 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR4v_523VmlE7u7_6GNw7ODu9Ku9_Ckws&callback=initMap">
     </script>
+
+    <a href="/pb.php">
+       <input type="button" value="Visit Real Time page" />
+    </a>
+
   </body>
 </html>
