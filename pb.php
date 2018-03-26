@@ -35,12 +35,15 @@ foreach ($feed->getEntityList() as $entity) {
     echo "Vehicle Latitude: ".$entity->getVehicle()->getPosition()->getLatitude()."<br>";
     echo "Vehicle Longitude: ".$entity->getVehicle()->getPosition()->getLongitude()."<br>";
     echo "Vehicle Speed: ".$entity->getVehicle()->getPosition()->getSpeed()."<br>";
-
-
-
+    echo "Vehicle Bearing: ".$entity->getVehicle()->getPosition()->getBearing ()."<br>";
+    #echo "(degrees clockwise from True North)<br>"
+    echo "Vehicle Status: ".$entity->getVehicle()->getCurrentStatus()."<br>";
+    #echo "(enum Status INCOMING_AT, The vehicle about to arrive at the stop; STOPPED_AT, standing at the stop; IN_TRANSIT_TO, in transit <br>";
+    echo "Congestion Level: ".$entity->getVehicle()->getCongestionLevel()."<br>";
 
   }
   echo "alert: ".$entity->getAlert()."<br>";
+
 
 
 }
