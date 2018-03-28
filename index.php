@@ -43,8 +43,8 @@ p    {color: red;}
   </a>
 
 
-  <a href="/busstop.php">
-  <input type="button" value="Bus Stop Info" />
+  <a href="/upload.php">
+  <input type="button" value="Upload Bus Stop and Schedule Info" />
   </a>
 
 
