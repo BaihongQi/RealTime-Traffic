@@ -42,6 +42,12 @@ p    {color: red;}
   <input type="button" value="Visit Real Time page" />
   </a>
 
+
+  <a href="/busstop.php">
+  <input type="button" value="Bus Stop Info" />
+  </a>
+
+
 </body>
 
 </html>
