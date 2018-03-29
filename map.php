@@ -21,13 +21,7 @@
   </head>
 
   <body>
-    <div id="floating-panel">
-      <input onclick="clearMarkers();" type=button value="Hide Construction Locations">
-      <input onclick="showMarkers();" type=button value="Show All Construction Locations">
-      <!--
-      <input onclick="deleteMarkers();" type=button value="Delete Markers">
-      -->
-    </div>
+
 
     <div id="map"></div>
 
@@ -77,7 +71,7 @@
             var edmonton = {lat: 53.5232, lng: -113.5263};
 
             map = new google.maps.Map(document.getElementById('map'), {
-              zoom: 10,
+              zoom: 11,
               center: edmonton,
             });
 
@@ -149,6 +143,16 @@
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR4v_523VmlE7u7_6GNw7ODu9Ku9_Ckws&callback=initMap">
     </script>
+
+
+    <div id="floating-panel">
+      <input onclick="clearMarkers();" type=button value="Hide Disruption Locations">
+      <input onclick="showMarkers();" type=button value="Show Disruption Locations">
+      <!--
+      <input onclick="deleteMarkers();" type=button value="Delete Markers">
+      -->
+    </div>
+
 
   </body>
 </html>
