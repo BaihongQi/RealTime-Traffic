@@ -97,7 +97,7 @@ if (($handle = fopen("stops.csv", "r")) !== FALSE) {
 
 $row2 = 1;
 
-if (($handle = fopen("stop_times.csv", "r")) !== FALSE) {
+if (($handle = fopen("stop_times1.csv", "r")) !== FALSE) {
     while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
         $num = count($data);
         #echo "<p> $num fields in line $row: <br /></p>\n";
