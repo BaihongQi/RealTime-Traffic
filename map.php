@@ -44,11 +44,12 @@
               $lat = explode(",", substr($data[16],1))[0];
               $long = explode(",", substr($data[16],0,-1))[1];
               #echo $lat. " ". $long."<br>";
-              #echo $data[11]."<br>";
+              #echo $data[9]."<br>";
 
               array_push($fruits, $lat);
               array_push($fruits, $long);
-              array_push($fruits, $data[11]);
+              array_push($fruits, "<h3>".$data[9]."</h3>".$data[11]);
+              array_push($fruits, $data[9]);
 
 
            }
@@ -87,11 +88,12 @@
 
           // Adds a marker to the map and push to the array.
 
-          function addMarker(location, information) {
+          function addMarker(location, information, atitle) {
 
             var marker = new google.maps.Marker({
               position: location,
-              map: map
+              map: map,
+              title: atitle
             });
             markers.push(marker);
 
@@ -123,9 +125,9 @@
             var edmonton = {lat: 53.5232, lng: -113.5263};
 
             var arrayLength = fruits.length;
-            for (var i = 0; i < arrayLength; i = i+2) {
+            for (var i = 0; i < arrayLength; i = i+3) {
               var newMarker = {lat: parseFloat(fruits[i]), lng: parseFloat(fruits[i+1])};
-              addMarker(newMarker, fruits[i+2]);
+              addMarker(newMarker, fruits[i+2],fruits[i+3]);
             }
 
 
