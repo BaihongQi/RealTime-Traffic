@@ -44,8 +44,13 @@ p    {color: red;}
 
 
   <a href="/upload.php">
-  <input type="button" value="Upload Bus Stop and Schedule Info" />
+  <input type="button" value="Auto Upload Bus Stop Info + create table" />
   </a>
+
+  <a href="/csv2sql.php">
+  <input type="button" value="Upload Bus Schedule" />
+  </a>
+
 
 
 </body>

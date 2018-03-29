@@ -42,10 +42,14 @@ if ($conn->query($sql) === TRUE) {
 
 $sql2 = "CREATE TABLE Trips (
 TripID INT,
-ADTime TIME,
+ATime TIME,
+DTime TIME,
 StopID INT,
 StopSequence INT,
-BusHeader VARCHAR(32)
+BusHeader VARCHAR(32),
+Pickup INT,
+Dropoff INT,
+Shape float
 )";
 
 if ($conn->query($sql2) === TRUE) {
@@ -81,7 +85,7 @@ if (($handle = fopen("stops.csv", "r")) !== FALSE) {
            if ($conn->query($sql) === TRUE) {
                echo "Stop Information inserted successfully<br>";
            } else {
-               #echo "Error inserting stop info: " . $conn->error."<br>";
+               echo "Error inserting stop info: " . $conn->error."<br>";
            }
 
        }
@@ -94,49 +98,6 @@ if (($handle = fopen("stops.csv", "r")) !== FALSE) {
 #echo $row."<br>";
 
 
-
-$row2 = 1;
-
-if (($handle = fopen("stop_times1.csv", "r")) !== FALSE) {
-    while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
-        $num = count($data);
-        #echo "<p> $num fields in line $row: <br /></p>\n";
-        $row2++;
-
-        if ($row2 != 2){
-          /*
-           echo "Vehicle Trip ID: ".$data[0] . "<br />";
-           echo "Arrival/Departure Time: ".$data[1] . "<br />";
-           echo "Stop ID: ".$data[3] . "<br />";
-           echo "Stop Sequence: ".$data[4] . "<br />";
-           */
-
-           /*
-           $sql2 = "CREATE TABLE Trips (
-           TripID INT AUTO_INCREMENT PRIMARY KEY,
-           ADTime TIME,
-           StopID INT,
-           StopSequence INT,
-           BusHeader VARCHAR(32)
-           )";
-           */
-
-           $sql = "INSERT INTO Trips VALUES "."('".$data[0]."', '".$data[1]."', '".$data[3]."', '".$data[4]."', '".$data[5]."');";
-           echo $sql."<br>";
-
-           if ($conn->query($sql) === TRUE) {
-               echo "Trip Information inserted successfully<br>";
-           } else {
-               echo "Error inserting trip info: " . $conn->error."<br>";
-           }
-
-
-       }
-       #echo "<br />";
-
-    }
-    fclose($handle);
-}
 
 #echo $row2."<br>";
 
