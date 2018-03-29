@@ -1,10 +1,11 @@
 i = 0
 
-file = open("stop_times9.csv","w") 
+file = open("stop_times1.csv","w") 
 
-with open("stop_times.csv") as f:
-    for line in f:
-        i = i + 1
-        if 1600000 < i <= 1800000:
-            file.write(line)
-        
+f=open('stop_times.csv')
+lines=f.readlines()
+
+for i in range(0, 100000):
+    file.write(lines[i])
+
+print(len(lines))
