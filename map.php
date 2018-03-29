@@ -21,97 +21,130 @@
   </head>
 
   <body>
-    <div id="map" class="content"></div>
+    <div id="floating-panel">
+      <input onclick="clearMarkers();" type=button value="Hide Construction Locations">
+      <input onclick="showMarkers();" type=button value="Show All Construction Locations">
+      <!--
+      <input onclick="deleteMarkers();" type=button value="Delete Markers">
+      -->
+    </div>
+
+    <div id="map"></div>
+
+    <?php
+    // php array
+
+    $fruits = array("53.5212", "-113.5133");
+
+    $row = 1;
+
+    $file = "https://data.edmonton.ca/api/views/m6ed-ysu7/rows.csv?accessType=DOWNLOAD";
+
+    if (($handle = fopen($file, "r")) !== FALSE) {
+        while (($data = fgetcsv($handle, 1000, ",")) !== FALSE) {
+            $num = count($data);
+            #echo "<p> $num fields in line $row: <br /></p>\n";
+            $row++;
+
+            if ($row != 2){
+              $lat = explode(",", substr($data[16],1))[0];
+              $long = explode(",", substr($data[16],0,-1))[1];
+              #echo $lat. " ". $long."<br>";
+              #echo $data[11]."<br>";
+
+              array_push($fruits, $lat);
+              array_push($fruits, $long);
+              array_push($fruits, $data[11]);
+
+
+           }
+        }
+        fclose($handle);
+    }
+
+    ?>
+
 
     <script>
-      var customLabel = {
-        restaurant: {
-          label: 'R'
-        },
-        bar: {
-          label: 'B'
-        }
-      };
 
-        function initMap() {
-        var map = new google.maps.Map(document.getElementById('map'), {
-          center: new google.maps.LatLng(53.5232, -113.5263),
-          zoom: 10
-        });
-        var infoWindow = new google.maps.InfoWindow;
+    var fruits = <?php echo '["' . implode('", "', $fruits) . '"]' ?>;
+    var positions = ["53.5212", "-113.5133"];
 
-          // Change this depending on the name of your PHP or XML file
-          downloadUrl('https://storage.googleapis.com/mapsdevsite/json/mapmarkers2.xml', function(data) {
-            var xml = data.responseXML;
-            var markers = xml.documentElement.getElementsByTagName('marker');
-            Array.prototype.forEach.call(markers, function(markerElem) {
-              var id = markerElem.getAttribute('id');
-              var name = markerElem.getAttribute('name');
-              var address = markerElem.getAttribute('address');
-              var type = markerElem.getAttribute('type');
-              var point = new google.maps.LatLng(
-                  parseFloat(markerElem.getAttribute('lat')),
-                  parseFloat(markerElem.getAttribute('lng')));
+    var map;
+    var markers = [];
 
-              var infowincontent = document.createElement('div');
-              var strong = document.createElement('strong');
-              strong.textContent = name
-              infowincontent.appendChild(strong);
-              infowincontent.appendChild(document.createElement('br'));
+    function initMap() {
+            var edmonton = {lat: 53.5232, lng: -113.5263};
 
-              var text = document.createElement('text');
-              text.textContent = address
-              infowincontent.appendChild(text);
-              var icon = customLabel[type] || {};
-              var marker = new google.maps.Marker({
-                map: map,
-                position: point,
-                label: icon.label
-              });
-              marker.addListener('click', function() {
-                infoWindow.setContent(infowincontent);
-                infoWindow.open(map, marker);
-              });
-
-              var flightPlanCoordinates = [
-                {lat: 53.5225, lng: -113.6242},
-                {lat: 53.4855, lng: -113.5137},
-                {lat: 53.5232, lng: -113.5263}
-              ];
-              var flightPath = new google.maps.Polyline({
-                path: flightPlanCoordinates,
-                geodesic: true,
-                strokeColor: '#FF0000',
-                strokeOpacity: 1.0,
-                strokeWeight: 2
-              });
-
-              flightPath.setMap(map);
-
-
+            map = new google.maps.Map(document.getElementById('map'), {
+              zoom: 10,
+              center: edmonton,
             });
-          });
-        }
 
+            // This event listener will call addMarker() when the map is clicked.
 
+            //map.addListener('click', function(event) {
+            //  addMarker(event.latLng);
+            //});
 
-      function downloadUrl(url, callback) {
-        var request = window.ActiveXObject ?
-            new ActiveXObject('Microsoft.XMLHTTP') :
-            new XMLHttpRequest;
-
-        request.onreadystatechange = function() {
-          if (request.readyState == 4) {
-            request.onreadystatechange = doNothing;
-            callback(request, request.status);
+            // Adds a marker at the center of the map.
+            //addMarker(edmonton);
           }
-        };
 
-        request.open('GET', url, true);
-        request.send(null);
-      }
+          // Adds a marker to the map and push to the array.
 
-      function doNothing() {}
+          function addMarker(location, information) {
+
+            var marker = new google.maps.Marker({
+              position: location,
+              map: map
+            });
+            markers.push(marker);
+
+            var infowindow = new google.maps.InfoWindow({
+              content: information
+            });
+
+            marker.addListener('click', function() {
+              infowindow.open(map, marker);
+            });
+
+          }
+
+          // Sets the map on all markers in the array.
+          function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+              markers[i].setMap(map);
+            }
+          }
+
+          // Removes the markers from the map, but keeps them in the array.
+          function clearMarkers() {
+            setMapOnAll(null);
+          }
+
+          // Shows any markers currently in the array.
+          function showMarkers() {
+
+            var edmonton = {lat: 53.5232, lng: -113.5263};
+
+            var arrayLength = fruits.length;
+            for (var i = 0; i < arrayLength; i = i+2) {
+              var newMarker = {lat: parseFloat(fruits[i]), lng: parseFloat(fruits[i+1])};
+              addMarker(newMarker, fruits[i+2]);
+            }
+
+
+            setMapOnAll(map);
+          }
+
+          // Deletes all markers in the array by removing references to them.
+          function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+          }
+
+
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDR4v_523VmlE7u7_6GNw7ODu9Ku9_Ckws&callback=initMap">
