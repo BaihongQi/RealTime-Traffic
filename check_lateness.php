@@ -28,21 +28,21 @@ $feed = new FeedMessage();
 $feed->parse($data);
 ini_set('date.timezone', 'America/Edmonton');
 $now = date ('H:i', time());
-echo $now;
+echo "Current time is :".$now."</br>";
 foreach ($feed->getEntityList() as $entity) {
   #echo "<br>a new bus</br>";
 
   echo "<br>Trip: " .$entity->getId()."</br>";
-  $cmd= "select * from trips where tripid= ".$entity->getVehicle()->getTrip()->getTripId()." and atime='".$now.":00';";
+  $cmd= "select s.* from stops s join trips t on s.stopid=t.stopid where t.tripid= ".$entity->getVehicle()->getTrip()->getTripId()." and t.atime='".$now.":00';";
   echo "query=".$cmd."</br>";
   $result = $conn->query($cmd);
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "Trip Id: " . $row["TripID"]. " - Arrival Time: " . $row["ATime"]. "-Scheduled Bus Stop:".$row["StopID"]."<br>";
+        echo "Stop ID: " . $row["StopID"]. " - Latitude: " . $row["Latitude"]. " - Longitude:".$row["Longitude"]."<br>";
     }
 } else {
-    echo "0 results";
+    echo "0 results</br>";
 }
 }
 
