@@ -39,7 +39,7 @@ foreach ($feed->getEntityList() as $entity) {
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-        echo "Trip Id: " . $row["TripID"]. " - Arrival Time: " . $row["ATime"]. "<br>";
+        echo "Trip Id: " . $row["TripID"]. " - Arrival Time: " . $row["ATime"]. "-Scheduled Bus Stop:".$row["StopID"]."<br>";
     }
 } else {
     echo "0 results";
