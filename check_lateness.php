@@ -74,7 +74,7 @@ foreach ($feed->getEntityList() as $entity) {
         $distance = distance($row2["Latitude"], $row2["Longitude"], $entity->getVehicle()->getPosition()->getLatitude(), $entity->getVehicle()->getPosition()->getLongitude(), "K");
         #echo $header. " distance from stop: ". $distance*1000 . " Meters<br><br>";
 
-        if ($distance*1000 > 2000){
+        if ($distance*1000 > 1500){
           array_push($congestion, $entity->getVehicle()->getPosition()->getLatitude());
           array_push($congestion, $entity->getVehicle()->getPosition()->getLongitude());
           if ($header != NULL){
@@ -185,6 +185,7 @@ while($i < sizeof($congestion)){
               array_push($fruits, $lat);
               array_push($fruits, $long);
               array_push($fruits, "<h3>".$data[9]."</h3>".$data[11]);
+              array_push($fruits, $data[9]);
 
 
            }
