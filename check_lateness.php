@@ -111,7 +111,7 @@ $i = 0;
 
 while($i < sizeof($congestion)){
   echo "congestion coordinates: ".$congestion[$i]. " ". $congestion[$i + 1]."<br>";
-  $i = $i + 2;
+  $i = $i + 4;
 }
 
 
@@ -151,7 +151,7 @@ while($i < sizeof($congestion)){
     <?php
     // php array
 
-    $fruits = array("53.5212", "-113.5133");
+    $fruits = array();
 
     $row = 1;
 
@@ -172,7 +172,6 @@ while($i < sizeof($congestion)){
               array_push($fruits, $lat);
               array_push($fruits, $long);
               array_push($fruits, "<h3>".$data[9]."</h3>".$data[11]);
-              array_push($fruits, $data[9]);
 
 
            }

@@ -28,9 +28,10 @@
     <?php
     // php array
 
-    $fruits = array("53.5212", "-113.5133");
+    $fruits = array();
 
     $row = 1;
+    $n = 0;
 
     $file = "https://data.edmonton.ca/api/views/m6ed-ysu7/rows.csv?accessType=DOWNLOAD";
 
@@ -50,7 +51,8 @@
               array_push($fruits, $long);
               array_push($fruits, "<h3>".$data[9]."</h3>".$data[11]);
               array_push($fruits, $data[9]);
-
+              echo $fruits[$n+3]."  ".$fruits[$n+1]."<br>";
+              $n = $n +4;
 
            }
         }
