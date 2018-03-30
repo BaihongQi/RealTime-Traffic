@@ -62,28 +62,41 @@ foreach ($feed->getEntityList() as $entity) {
 
       $cmd2  = "select * from stops s where s.StopID = ".$row["StopID"];
       $header = $row["BusHeader"];
-      echo "Header: ".sizeof($row)."<br>";
+      #echo "Header: ".sizeof($row)."<br>";
 
       $result2 = $conn->query($cmd2);
 
       if ($result2->num_rows > 0){
         $row2 = $result2->fetch_assoc();
         #echo "Stop ID: " . $row2["StopID"]. " - Latitude: " . $row2["Latitude"]. " - Longitude: ".$row2["Longitude"]."<br>";
-        echo "Vechicle Latitude: ".$entity->getVehicle()->getPosition()->getLatitude()." Longitude: ".$entity->getVehicle()->getPosition()->getLongitude()."<br>";
+        #echo "Vechicle Latitude: ".$entity->getVehicle()->getPosition()->getLatitude()." Longitude: ".$entity->getVehicle()->getPosition()->getLongitude()."<br>";
 
         $distance = distance($row2["Latitude"], $row2["Longitude"], $entity->getVehicle()->getPosition()->getLatitude(), $entity->getVehicle()->getPosition()->getLongitude(), "K");
-        echo $header. " distance from stop: ". $distance*1000 . " Meters<br><br>";
+        #echo $header. " distance from stop: ". $distance*1000 . " Meters<br><br>";
 
         if ($distance*1000 > 2000){
           array_push($congestion, $entity->getVehicle()->getPosition()->getLatitude());
           array_push($congestion, $entity->getVehicle()->getPosition()->getLongitude());
-          array_push($congestion, "<h3>".$header."</h3>"."Bus distance from stop: ". $distance*1000 . " Meters<br><br>");
-          array_push($congestion, $header);
+          if ($header != NULL){
+            array_push($congestion, "<h3>".$header."</h3>"."Bus distance from stop: ". $distance*1000 . " Meters<br><br>");
+            array_push($congestion, $header);
+          }else{
+            array_push($congestion, "Congestion");
+            array_push($congestion, "Congestion");
+          }
 
         }
       }
 
     }
+
+    /*
+    $j = 0;
+    while($j < sizeof($congestion)){
+      echo $congestion[$j]. " ".$congestion[$j+1]. " ". $congestion[$j+2]. ' '. $congestion[$j+3]."<br>";
+      $j = $j + 4;
+    }
+    */
 
 
 /*
@@ -250,7 +263,7 @@ while($i < sizeof($congestion)){
             var edmonton = {lat: 53.5232, lng: -113.5263};
 
             var arrayLength = fruits.length;
-            for (var i = 0; i < arrayLength; i = i+3) {
+            for (var i = 0; i < arrayLength; i = i+4) {
               var newMarker = {lat: parseFloat(fruits[i]), lng: parseFloat(fruits[i+1])};
               addMarker(newMarker, fruits[i+2],fruits[i+3]);
             }
@@ -264,7 +277,7 @@ while($i < sizeof($congestion)){
 
             deleteMarkers();
             var arrayLength = conges.length;
-            for (var i = 0; i < arrayLength; i = i+3) {
+            for (var i = 0; i < arrayLength; i = i+4) {
               var newMarker = {lat: parseFloat(conges[i]), lng: parseFloat(conges[i+1])};
               addMarker(newMarker, conges[i+2],conges[i+3]);
             }

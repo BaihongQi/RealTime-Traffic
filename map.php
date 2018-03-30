@@ -51,7 +51,7 @@
               array_push($fruits, $long);
               array_push($fruits, "<h3>".$data[9]."</h3>".$data[11]);
               array_push($fruits, $data[9]);
-              echo $fruits[$n+3]."  ".$fruits[$n+1]."<br>";
+              #echo $fruits[$n+3]."  ".$fruits[$n+1]."<br>";
               $n = $n +4;
 
            }
@@ -127,7 +127,7 @@
             var edmonton = {lat: 53.5232, lng: -113.5263};
 
             var arrayLength = fruits.length;
-            for (var i = 0; i < arrayLength; i = i+3) {
+            for (var i = 0; i < arrayLength; i = i+4) {
               var newMarker = {lat: parseFloat(fruits[i]), lng: parseFloat(fruits[i+1])};
               addMarker(newMarker, fruits[i+2],fruits[i+3]);
             }
