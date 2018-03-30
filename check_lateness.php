@@ -77,6 +77,9 @@ foreach ($feed->getEntityList() as $entity) {
         if ($distance*1000 > 2000){
           array_push($congestion, $entity->getVehicle()->getPosition()->getLatitude());
           array_push($congestion, $entity->getVehicle()->getPosition()->getLongitude());
+          array_push($congestion, "<h3>".$header."</h3>"."Bus distance from stop: ". $distance*1000 . " Meters<br><br>");
+          array_push($congestion, $header);
+
         }
       }
 
@@ -243,6 +246,7 @@ while($i < sizeof($congestion)){
 
           // Shows any markers currently in the array.
           function showMarkers() {
+            deleteMarkers();
 
             var edmonton = {lat: 53.5232, lng: -113.5263};
 
@@ -261,9 +265,9 @@ while($i < sizeof($congestion)){
 
             deleteMarkers();
             var arrayLength = conges.length;
-            for (var i = 0; i < arrayLength; i = i+2) {
+            for (var i = 0; i < arrayLength; i = i+3) {
               var newMarker = {lat: parseFloat(conges[i]), lng: parseFloat(conges[i+1])};
-              addMarker(newMarker, "","");
+              addMarker(newMarker, conges[i+2],conges[i+3]);
             }
 
             setMapOnAll(map);
