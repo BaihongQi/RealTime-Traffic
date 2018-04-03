@@ -26,7 +26,7 @@ p    {color: red;}
 
   a {
       position: relative;
-      left: 500px;
+      left: 250px;
       top: 200px;
   }
 
@@ -52,6 +52,9 @@ p    {color: red;}
   </a>
 
 
+  <a href="/check_lateness.php">
+  <input type="button" value="congestion" />
+  </a>
 
 </body>
 
