@@ -84,5 +84,26 @@ will return the point of congestion and pass to congestion informaition to the m
 ![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.51.10%20AM.png)
 and click on the "Auto Upload Bus Stop Info + create Table button"
 which will then create the database tables needed in the back end, and populate the database with the bus stop information. Upon the first time opening the page, there should appear succefully creating table and inserting data messages. Opening the pages again will not affect the database. 
-![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.54.17%20AM.png)
 
+![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.54.17%20AM.png)
+3. click on "Upload Bus Schedule" button to open CSV to Mysql page, and enter information of your own hostname, username, password, filling database name with "buses" and table name "trips" and name of the file "stop_times.csv". This file will be updated by the city of Edmonton every month or so and will need to maintained and reuploaded upon updating.
+
+***
+###For users
+1. By clicking "Visit Real Time page", each buses running at the moment will be displayed as text with information shown as below:
+Trip: 4214
+Vehicle Trip ID: 14190284
+Vehicle ID: 2134
+Vehicle Latitude: 53.540878295898
+Vehicle Longitude: -113.50923156738
+Vehicle Speed: 2.5890467441059E-6
+Vehicle Bearing: 90
+Vehicle Status: 2
+Vehicle Info TimeStamp: 1525157946
+
+
+2. By clicking the "Congestion" button, there will be three buttons shown at the bottom of the Google Map API
+By clicking on "Show Disruption Locations", it will show the current disruption information and clicking on the marker will show detailed information
+clicking on "Hide Disruption Locations" will hide all the disruption location markers.
+By clicking on "Shown Congestion Locations", it will show the congestion conditions as the locations in which the buses are running late at. Details can also be displayed by clicking on the marker, which will then show the bus header and the distance of the bus from the bus stop. The threshold (the distance) can be adjusted in check_lateness.php to get different levels of congestions.
+![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%201.05.05%20AM.png)
