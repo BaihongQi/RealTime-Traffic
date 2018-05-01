@@ -108,3 +108,7 @@ By clicking on "Show Disruption Locations", it will show the current disruption 
 clicking on "Hide Disruption Locations" will hide all the disruption location markers.
 By clicking on "Shown Congestion Locations", it will show the congestion conditions as the locations in which the buses are running late at. Details can also be displayed by clicking on the marker, which will then show the bus header and the distance of the bus from the bus stop. The threshold (the distance) can be adjusted in check_lateness.php to get different levels of congestions.
 ![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%201.05.05%20AM.png)
+
+***
+## Diagram
+![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Diagram.jpg)
