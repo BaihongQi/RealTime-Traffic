@@ -66,9 +66,15 @@ use transit_realtime\FeedMessage;
 ***
 [CSV to Mysql](https://github.com/BaihongQi/RealTime-Traffic/blob/master/csv2sql.php) are used to quickly insert the csv file
 file into mysql database in one minute. The script will uploads a csv with 2 Million rows in 60 seconds.
+![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.06.09%20AM.png)
+
 
 ***
 [Check Latenss](https://github.com/BaihongQi/RealTime-Traffic/blob/master/check_lateness.php) are usued to automitically generate
 the bus ID runing on the road, and check in the databse for the schduled location of the bus. After comparing the two loactionss, it
 will return the point of congestion and pass to congestion informaition to the map sectionl, which will be displayed on the google map.
+![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.30.04%20AM.png)
+
+## Instructions:
+
 
