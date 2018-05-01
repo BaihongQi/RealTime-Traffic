@@ -78,7 +78,7 @@ will return the point of congestion and pass to congestion informaition to the m
 
 ## Instructions:
 
-###For admin setup
+* For admin setup
 1. Create Mysql database named buses, which will later be used to create the required tables in
 2. open the index page
 ![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.51.10%20AM.png)
@@ -90,7 +90,7 @@ which will then create the database tables needed in the back end, and populate 
 3. click on "Upload Bus Schedule" button to open CSV to Mysql page, and enter information of your own hostname, username, password, filling database name with "buses" and table name "trips" and name of the file "stop_times.csv". This file will be updated by the city of Edmonton every month or so and will need to maintained and reuploaded upon updating.
 
 ***
-###For users
+* For users
 1. By clicking "Visit Real Time page", each buses running at the moment will be displayed as text with information shown as below:
 Trip: 4214
 Vehicle Trip ID: 14190284
