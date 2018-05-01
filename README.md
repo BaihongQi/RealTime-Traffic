@@ -73,9 +73,16 @@ file into mysql database in one minute. The script will uploads a csv with 2 Mil
 
 ***
 [Check Latenss](https://github.com/BaihongQi/RealTime-Traffic/blob/master/check_lateness.php) are usued to automitically fetch the bus ID runing on the road and the longitudes and latitudes of each bus in real time, and look up in the databse for the schduled stop location of the bus. After comparing the two loactionss, it
-will return the point of congestion and pass to congestion informaition to the map section, which will be displayed on the google map. Upon clicking on the location, the buses header (e.g. 4 Capilano - Lewis Farm) and the distance from the schedule stop will be shown in a text box.
+will return the point of congestion and pass to congestion informaition to the map section, which will be displayed on the google map. Upon clicking on the location, the bus header (e.g. 4 Capilano - Lewis Farm) and the distance from the schedule stop will be shown in a text box.
 ![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.30.04%20AM.png)
 
 ## Instructions:
 
+###For admin setup
+1. Create Mysql database named buses, which will later be used to create the required tables in
+2. open the index page
+![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.51.10%20AM.png)
+and click on the "Auto Upload Bus Stop Info + create Table button"
+which will then create the database tables needed in the back end, and populate the database with the bus stop information. Upon the first time opening the page, there should appear succefully creating table and inserting data messages. Opening the pages again will not affect the database. 
+![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.54.17%20AM.png)
 
