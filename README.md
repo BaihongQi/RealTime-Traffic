@@ -86,6 +86,7 @@ and click on the "Auto Upload Bus Stop Info + create Table button"
 which will then create the database tables needed in the back end, and populate the database with the bus stop information. Upon the first time opening the page, there should appear succefully creating table and inserting data messages. Opening the pages again will not affect the database. 
 
 ![alt text](https://github.com/BaihongQi/RealTime-Traffic/blob/master/Screen%20Shot%202018-05-01%20at%2012.54.17%20AM.png)
+
 3. click on "Upload Bus Schedule" button to open CSV to Mysql page, and enter information of your own hostname, username, password, filling database name with "buses" and table name "trips" and name of the file "stop_times.csv". This file will be updated by the city of Edmonton every month or so and will need to maintained and reuploaded upon updating.
 
 ***
