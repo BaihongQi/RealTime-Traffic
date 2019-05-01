@@ -1,6 +1,6 @@
 # Detect Traffic Congestion of Edmonton using GTFS Data
 ***
-Hong Chen & Baihong Qi
+Code written by Baihong Qi and Hong Chen
 
 ## Introduction:
 This is a web app dectecting and displaying 1. the congestion condition of Edmonton 2. the disruption condition such as construction or road closure. It uses GTFS real time bus 
